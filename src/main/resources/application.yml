@@ -1,0 +1,17 @@
+spring:
+  thymeleaf:
+    cache: false
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://139.9.221.111:12345/Ruffian?userSSL=false
+    username: root
+    password: hl951103
+server:
+  port: 10086
+logging:
+  level:
+    root: info
+    com.example: debug
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

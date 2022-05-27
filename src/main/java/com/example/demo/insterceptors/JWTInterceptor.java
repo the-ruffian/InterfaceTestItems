@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * jwt规则
+ * @author the-ruffian
  */
 public class JWTInterceptor implements HandlerInterceptor {
     @Override

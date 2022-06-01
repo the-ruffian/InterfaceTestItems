@@ -33,6 +33,7 @@ public class RegisterDto implements Serializable {
 
     @ApiModelProperty(value = "密码(md5加密)")
     @Length(min = 32, max = 32, message = "密码必须经过md5加密，32位")
+    @NotEmpty(message = "密码不能为空")
     private String password;
 
     @ApiModelProperty(value = "性别(0女，1男，2保密)")

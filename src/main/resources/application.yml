@@ -3,7 +3,7 @@ spring:
     cache: false
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://139.9.221.111:12345/Ruffian?userSSL=false
+    url: jdbc:mysql://139.9.221.111:12345/study?userSSL=false
     username: root
     password: hl951103
 server:

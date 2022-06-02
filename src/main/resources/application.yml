@@ -6,6 +6,18 @@ spring:
     url: jdbc:mysql://139.9.221.111:12345/study?userSSL=false
     username: root
     password: hl951103
+
+  redis:
+    host: 139.9.221.111
+    port: 6397
+    password: TheRuffian945
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: -1
+        max-idle: 8
+        min-idle: 0
+    timeout: 30000
 server:
   port: 10086
 logging:

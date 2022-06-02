@@ -14,9 +14,9 @@ import com.example.demo.mapper.UserDao;
 import com.example.demo.model.dto.RegisterDto;
 import com.example.demo.services.user.server.UserService;
 import com.example.demo.utils.Common;
+import com.example.demo.utils.HmacUtil;
 import com.example.demo.utils.model.OpenResponse;
 import org.springframework.stereotype.Service;
-import org.springframework.util.DigestUtils;
 
 /**
  * @author the-ruffian
@@ -45,7 +45,7 @@ public class UserServerImpl implements UserService {
             user.setPhone(registerDto.getPhone());
             user.setUsername(registerDto.getUsername());
             user.setGender(gender);
-            user.setPassword(DigestUtils.md5DigestAsHex(registerDto.getPassword().getBytes()));
+            user.setPassword(HmacUtil.getSsa256Str(registerDto.getPassword()));
             user.setEmail(registerDto.getEmail());
             user.setCreateTime(Common.getNowTime());
             userDao.insert(user);

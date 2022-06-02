@@ -1,5 +1,6 @@
 package com.example.demo.services.user.server;
 
+import com.example.demo.model.dto.LoginDto;
 import com.example.demo.model.dto.RegisterDto;
 import com.example.demo.utils.model.OpenResponse;
 
@@ -13,4 +14,11 @@ public interface UserService {
      * @return 注册信息
      */
     OpenResponse<Object> register(RegisterDto registerDto);
+
+    /**
+     * 登录接口
+     * @param loginDto phone,password
+     * @return token
+     */
+    OpenResponse<Object> login(LoginDto loginDto);
 }

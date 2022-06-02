@@ -1,11 +1,3 @@
-/*
- * @Description:Common
- * @CreatedBy:IntelliJ IDEA
- * @Author: the-ruffian
- * @Date: 2022-05-29 14:43
- * @LastEditTime: 2022-05-29 14:43
- * @LastEditors: the-ruffian
- */
 package com.example.demo.utils;
 
 import java.sql.Timestamp;

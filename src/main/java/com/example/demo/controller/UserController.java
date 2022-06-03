@@ -8,9 +8,11 @@
  */
 package com.example.demo.controller;
 
+import com.example.demo.model.dto.LoginDto;
 import com.example.demo.model.dto.RegisterDto;
 import com.example.demo.services.user.server.UserService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,8 +36,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 
     @ApiOperation(value = "用户注册")
-    @PostMapping(value = "/register", produces = "application/json; chartset=UTF-8")
+    @PostMapping(value = "/register", produces = "application/json; charset=UTF-8")
     public Object create(@Validated @RequestBody RegisterDto registerDto){
         return userService.register(registerDto);
+    }
+
+    @ApiModelProperty(value = "登录")
+    @PostMapping(value = "/login", produces = "application/json; charset=UTF-8")
+    public Object login(@Validated @RequestBody LoginDto loginDto){
+        return userService.login(loginDto);
     }
 }

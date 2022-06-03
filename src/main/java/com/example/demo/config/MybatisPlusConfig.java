@@ -7,11 +7,12 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * MP拦截器
+ * @author the-ruffian
  */
 @Configuration
 @MapperScan("com.example.demo.mapper")
 public class MybatisPlusConfig {
-    /*
+    /**
      * 分页拦截器
      * */
     @Bean

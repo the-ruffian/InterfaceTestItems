@@ -4,11 +4,18 @@ import com.example.demo.enums.Status;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
 
+/**
+ *
+ * @param <T> any
+ * @author the-ruffian
+ */
 @ApiModel("JSON响应数据")
 @Data
+@EqualsAndHashCode(callSuper = false)
 public class OpenResponse<T> extends BaseResponse implements Serializable {
 
     @ApiModelProperty("返回数据")

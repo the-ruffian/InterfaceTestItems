@@ -6,6 +6,10 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 
+/**
+ *
+ * @author the-ruffian
+ */
 @Data
 @ApiModel("响应对象数据")
 public class BaseResponse {

@@ -1,11 +1,3 @@
-/*
- * @Description:User
- * @CreatedBy:IntelliJ IDEA
- * @Author: the-ruffian
- * @Date: 2022-05-29 12:54
- * @LastEditTime: 2022-05-29 12:54
- * @LastEditors: the-ruffian
- */
 package com.example.demo.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;

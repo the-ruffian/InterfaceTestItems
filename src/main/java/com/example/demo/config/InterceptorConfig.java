@@ -7,6 +7,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
  * 接口拦截配置
+ * @author the-ruffian
  */
 @Configuration
 public class InterceptorConfig implements WebMvcConfigurer {

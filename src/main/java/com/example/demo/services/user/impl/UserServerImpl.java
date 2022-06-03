@@ -78,7 +78,8 @@ public class UserServerImpl implements UserService {
                 user.setLoginTime(Common.getNowTime());
                 userDao.update(user, userQueryWrapper.eq("phone", loginDto.getPhone()));
                 UserLoginVo userLoginVo = new UserLoginVo();
-                if (!redisUtils.exists("user_"+loginDto.getPhone())){
+                String userToken = "user_"+loginDto.getPhone();
+                if (!redisUtils.exists(userToken)){
                     HashMap<String, String> payload = new HashMap<>(255);
                     payload.put("phone", loginDto.getPhone());
                     payload.put("password",HmacUtil.getSsa256Str(loginDto.getPassword()));
@@ -89,11 +90,11 @@ public class UserServerImpl implements UserService {
                     objectObjectHashMap.put("username", user.getUsername());
                     objectObjectHashMap.put("token",token);
                     redisUtils.hmSet("user_"+ loginDto.getPhone(), objectObjectHashMap);
-                    redisUtils.setTimeOfDay("user_"+ loginDto.getPhone(),7);
+                    redisUtils.setTimeOfDay(userToken,7);
 
                 }else {
-                    redisUtils.setTimeOfDay("user_"+ loginDto.getPhone(),7);
-                    String token = redisUtils.hmGet("user_" + loginDto.getPhone(), "token").toString();
+                    redisUtils.setTimeOfDay(userToken,7);
+                    String token = redisUtils.hmGet(userToken, "token").toString();
                     userLoginVo.setToken(token);
                 }
                 userLoginVo.setUsername(user.getUsername());

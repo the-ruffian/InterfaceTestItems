@@ -3,8 +3,6 @@
  * @CreatedBy:IntelliJ IDEA
  * @Author: the-ruffian
  * @Date: 2022-05-29 14:06
- * @LastEditTime: 2022-05-29 14:06
- * @LastEditors: the-ruffian
  */
 package com.example.demo.services.user.impl;
 
@@ -55,7 +53,7 @@ public class UserServerImpl implements UserService {
             user.setPhone(registerDto.getPhone());
             user.setUsername(registerDto.getUsername());
             user.setGender(gender);
-            user.setPassword(HmacUtil.getSsa256Str(registerDto.getPassword()));
+            user.setPassword(HmacUtil.getSha256Str(registerDto.getPassword()));
             user.setEmail(registerDto.getEmail());
             user.setCreateTime(Common.getNowTime());
             userDao.insert(user);
@@ -74,7 +72,7 @@ public class UserServerImpl implements UserService {
                 .eq("phone",loginDto.getPhone())) != 0 ){
             User user = userDao.selectOne(userQueryWrapper.select("password")
                     .eq("phone", loginDto.getPhone()));
-            if (HmacUtil.getSsa256Str(loginDto.getPassword()).equals(user.getPassword())){
+            if (HmacUtil.getSha256Str(loginDto.getPassword()).equals(user.getPassword())){
                 user.setLoginTime(Common.getNowTime());
                 userDao.update(user, userQueryWrapper.eq("phone", loginDto.getPhone()));
                 UserLoginVo userLoginVo = new UserLoginVo();
@@ -82,7 +80,7 @@ public class UserServerImpl implements UserService {
                 if (!redisUtils.exists(userToken)){
                     HashMap<String, String> payload = new HashMap<>(255);
                     payload.put("phone", loginDto.getPhone());
-                    payload.put("password",HmacUtil.getSsa256Str(loginDto.getPassword()));
+                    payload.put("password",HmacUtil.getSha256Str(loginDto.getPassword()));
                     String token = JWTUtils.getToken(payload);
                     userLoginVo.setToken(token);
 

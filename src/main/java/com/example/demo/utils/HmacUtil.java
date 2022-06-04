@@ -12,7 +12,7 @@ import java.security.NoSuchAlgorithmException;
  * @author the-ruffian
  */
 public class HmacUtil {
-    public static String getSsa256Str(String str){
+    public static String getSha256Str(String str){
         MessageDigest messageDigest;
         String encodeStr = "";
         try {

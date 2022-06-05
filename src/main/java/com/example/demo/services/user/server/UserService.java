@@ -2,6 +2,7 @@ package com.example.demo.services.user.server;
 
 import com.example.demo.model.dto.LoginDto;
 import com.example.demo.model.dto.RegisterDto;
+import com.example.demo.model.dto.UpdateDto;
 import com.example.demo.utils.model.OpenResponse;
 
 /**
@@ -21,4 +22,11 @@ public interface UserService {
      * @return token
      */
     OpenResponse<Object> login(LoginDto loginDto);
+
+    /**
+     *
+     * @param updateDto phone
+     * @return new_information
+     */
+    OpenResponse<Object> update(UpdateDto updateDto);
 }

@@ -11,6 +11,7 @@ import com.example.demo.entity.User;
 import com.example.demo.mapper.UserDao;
 import com.example.demo.model.dto.LoginDto;
 import com.example.demo.model.dto.RegisterDto;
+import com.example.demo.model.dto.UpdateDto;
 import com.example.demo.model.vo.UserLoginVo;
 import com.example.demo.services.user.server.UserService;
 import com.example.demo.utils.Common;
@@ -102,6 +103,22 @@ public class UserServerImpl implements UserService {
             }
         }else {
             return OpenResponse.fail("账号不存在");
+        }
+    }
+
+    @Override
+    public OpenResponse<Object> update(UpdateDto updateDto){
+        QueryWrapper<User> userQueryWrapper = new QueryWrapper<>();
+        Integer existUser = userDao.selectCount(userQueryWrapper.eq("phone", updateDto.getPhone()));
+        if (existUser != 0){
+            try {
+                userDao.userUpdateSelf(updateDto);
+                return OpenResponse.ok("信息修改成功", userDao.userUpdateReturn(updateDto));
+            }catch (Exception e){
+                return OpenResponse.fail("修改失败",e);
+            }
+        }else {
+            return OpenResponse.fail("用户不存在");
         }
     }
 }

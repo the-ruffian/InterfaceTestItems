@@ -10,9 +10,9 @@ package com.example.demo.controller;
 
 import com.example.demo.model.dto.LoginDto;
 import com.example.demo.model.dto.RegisterDto;
+import com.example.demo.model.dto.UpdateDto;
 import com.example.demo.services.user.server.UserService;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -41,9 +41,15 @@ import org.springframework.web.bind.annotation.RestController;
         return userService.register(registerDto);
     }
 
-    @ApiModelProperty(value = "登录")
+    @ApiOperation(value = "登录")
     @PostMapping(value = "/login", produces = "application/json; charset=UTF-8")
     public Object login(@Validated @RequestBody LoginDto loginDto){
         return userService.login(loginDto);
+    }
+
+    @ApiOperation(value = "修改个人信息")
+    @PostMapping(value = "/update",produces = "application/json; charset=UTF-8")
+    public Object update(@Validated @RequestBody UpdateDto updateDto){
+        return userService.update(updateDto);
     }
 }
